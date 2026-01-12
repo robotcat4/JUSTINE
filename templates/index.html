@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>FRC Match Observer</title>
+    <title>JUSTINE | Match Observation</title>
     <style>
         body { font-family: sans-serif; padding: 20px; text-align: center; }
         input { font-size: 20px; padding: 10px; width: 80%; margin-bottom: 20px; }
         .btn-group { display: flex; flex-direction: column; gap: 15px; }
-        button {
-            font-size: 24px; padding: 20px; cursor: pointer;
-            border: none; border-radius: 8px; color: white;
-        }
+        button { font-size: 24px; padding: 20px; cursor: pointer; border: none; border-radius: 8px; color: white; }
         .green { background-color: #28a745; }
         .yellow { background-color: #ffc107; color: black; }
         .red { background-color: #dc3545; }
+        .history-item { text-align: left; background: #eee; margin: 5px 0; padding: 10px; border-radius: 4px; list-style: none; }
     </style>
 </head>
 <body>
-    <h1>Match Observation</h1>
+    <h1>JUSTINE Match Observation</h1>
 
     <form action="/submit" method="post">
         <input type="number" name="team_number" placeholder="Enter Team #" required>
-
         <h3>Intake Status</h3>
         <div class="btn-group">
             <button type="submit" name="intake_status" value="Working" class="green">Working</button>
@@ -28,5 +25,17 @@
             <button type="submit" name="intake_status" value="Broken" class="red">Broken / None</button>
         </div>
     </form>
+
+    <hr>
+    <h2>Observation History</h2>
+    <div style="max-width: 400px; margin: 0 auto;">
+        {% for row in history %}
+            <div class="history-item">
+                <strong>Team {{ row.team_number }}</strong>: {{ row.intake_status }}
+            </div>
+        {% else %}
+            <p>No observations recorded yet.</p>
+        {% endfor %}
+    </div>
 </body>
 </html>
