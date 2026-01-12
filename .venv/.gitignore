@@ -1,0 +1,14 @@
+# created by virtualenv automatically
+# Ignore the virtual environment
+venv/
+.venv/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore the local database (so you don't overwrite it if you pull code later)
+*.db
+
+# Ignore PyCharm's internal settings
+.idea/

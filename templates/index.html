@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FRC Match Observer</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; text-align: center; }
+        input { font-size: 20px; padding: 10px; width: 80%; margin-bottom: 20px; }
+        .btn-group { display: flex; flex-direction: column; gap: 15px; }
+        button {
+            font-size: 24px; padding: 20px; cursor: pointer;
+            border: none; border-radius: 8px; color: white;
+        }
+        .green { background-color: #28a745; }
+        .yellow { background-color: #ffc107; color: black; }
+        .red { background-color: #dc3545; }
+    </style>
+</head>
+<body>
+    <h1>Match Observation</h1>
+
+    <form action="/submit" method="post">
+        <input type="number" name="team_number" placeholder="Enter Team #" required>
+
+        <h3>Intake Status</h3>
+        <div class="btn-group">
+            <button type="submit" name="intake_status" value="Working" class="green">Working</button>
+            <button type="submit" name="intake_status" value="Intermittent" class="yellow">Intermittent</button>
+            <button type="submit" name="intake_status" value="Broken" class="red">Broken / None</button>
+        </div>
+    </form>
+</body>
+</html>
