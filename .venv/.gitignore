@@ -12,3 +12,6 @@ __pycache__/
 
 # Ignore PyCharm's internal settings
 .idea/
+
+# Ignore environment variables file
+.env
