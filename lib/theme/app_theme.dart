@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // Define your main colors here so you can change them in one spot
-  static const Color primaryPurple = Color(0xFF353972);
-  static const Color backgroundGrey = Color(0xFF44475A); // From your surface color
+  // Design colors from Figma
+  static const Color backgroundDark = Color(0xFF1A1A2E);
+  static const Color surfaceDark = Color(0xFF28283E);
+  static const Color inputBackground = Color(0xFF3A3A4A);
+  static const Color tableHeaderBg = Color(0xFF3F3E5E);
+  static const Color accentPurple = Color(0xFF6A4CE4);
+  static const Color accentPurpleBright = Color(0xFF7F58E8);
 
-  // Light Theme (Generated from your seed color)
+  static const Color primaryPurple = Color(0xFF353972);
+  static const Color backgroundGrey = Color(0xFF44475A);
+
+  // Light Theme
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(
@@ -14,20 +21,29 @@ class AppTheme {
     ),
   );
 
-  // Dark Theme (Your main focus)
+  // Dark Theme matching Figma
   static final ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: primaryPurple,
-      brightness: Brightness.dark,
-      // You can force specific overrides here if the seed generation isn't perfect
-      surface: backgroundGrey,
+    scaffoldBackgroundColor: surfaceDark,
+    colorScheme: ColorScheme.dark(
+      primary: accentPurple,
+      surface: surfaceDark,
+      onSurface: Colors.white,
+      onPrimary: Colors.white,
+      surfaceContainerHighest: tableHeaderBg,
     ),
-    // Example: styling all input borders globally to match your design
-    inputDecorationTheme: const InputDecorationTheme(
-      border: OutlineInputBorder(),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: backgroundDark,
+      foregroundColor: Colors.white,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
       filled: true,
-      fillColor: Colors.black12,
+      fillColor: inputBackground,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+    ),
+    drawerTheme: const DrawerThemeData(
+      backgroundColor: backgroundDark,
     ),
   );
 }
