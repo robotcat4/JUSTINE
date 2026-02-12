@@ -4,16 +4,19 @@ import FlutterMacOS
 class MainFlutterWindow: NSWindow {
   override func awakeFromNib() {
     let flutterViewController = FlutterViewController()
-      let macOSFrame = NSRect(
-          x: 0,
-          y: 0,
-          width: 1800,
-          height: 900
-      )
-      self.setFrame(macOSFrame, display: true)
+      let macOSFrame = NSSize(width: 1400, height: 900)
+      self.setContentSize(macOSFrame)
+      self.center()
+//      self.setFrame(macOSFrame, display: true)
+
     self.contentViewController = flutterViewController
     RegisterGeneratedPlugins(registry: flutterViewController)
 
+    NSApp.activate(ignoringOtherApps: true)
+    self.makeKeyAndOrderFront(nil)
+
     super.awakeFromNib()
+
+      //NSApp.activate(ignoringOtherApps: true)
   }
 }
